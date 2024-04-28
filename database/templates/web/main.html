@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 align="center">Лабараторна робота 8</h1>
+<p  align="center"><span style="font-style: italic; color: red;">Осадча Анастасія, КН-20001б</span></p>
+    <table align="center">
+        <h2 align="center">Таблиця складів</h2>
+        <thead>
+            <tr>
+                <th>Номер складу</th>
+                <th>Адреса</th>
+                <th>Завідувач</th>
+                <th>Номер телефону</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for warehouse_item in warehouse %}
+            <tr>
+                <td align="left" valign="middle">{{ warehouse_item.warehouse_number }}</td>
+                <td align="left" valign="middle">{{ warehouse_item.warehouse_address }}</td>
+                <td align="left" valign="middle">{{ warehouse_item.warehouse_manager }}</td>
+                <td align="left" valign="middle">{{ warehouse_item.warehouse_phone_number }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table align="center">
+        <h2 align="center">Таблиця клієнтів</h2>
+        <thead>
+            <tr>
+                <th>Номер клієнта</th>
+                <th>Назва</th>
+                <th>Адреса</th>
+                <th>Номер телефону</th>
+                <th>Контактна особа</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer_item in customer %}
+            <tr>
+                <td align="left" valign="middle">{{ customer_item.customer_code }}</td>
+                <td align="left" valign="middle">{{ customer_item.customer_name }}</td>
+                <td align="left" valign="middle">{{ customer_item.customer_address }}</td>
+                <td align="left" valign="middle">{{ customer_item.customer_phone_number }}</td>
+                <td align="left" valign="middle">{{ customer_item.contact_person }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table align="center">
+        <h2 align="center">Таблиця товарів</h2>
+        <thead>
+            <tr>
+                <th>Код товару</th>
+                <th>Тип товару</th>
+                <th>Назва</th>
+                <th>Виробник</th>
+                <th>Склад</th>
+                <th>Кількість</th>
+                <th>Ціна</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for goods_item in goods %}
+            <tr>
+                <td align="left" valign="middle">{{ goods_item.goods_code }}</td>
+                <td align="left" valign="middle">{{ goods_item.goods_type }}</td>
+                <td align="left" valign="middle">{{ goods_item.goods_name }}</td>
+                <td align="left" valign="middle">{{ goods_item.goods_manufacturer }}</td>
+                <td align="left" valign="middle">{{ goods_item.goods_warehouse_number.warehouse_number }}</td>
+                <td align="left" valign="middle">{{ goods_item.goods_warehouse_quantity }}</td>
+                <td align="left" valign="middle">{{ goods_item.goods_price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+     <table align="center">
+        <h2 align="center">Таблиця покупок</h2>
+        <thead>
+            <tr>
+                <th>Код покупки</th>
+                <th>Дата</th>
+                <th>Клієнт</th>
+                <th>Товар</th>
+                <th>Кількість</th>
+                <th>Знижка</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sales_item in sales %}
+            <tr>
+                <td align="left" valign="middle">{{ sales_item.sales_code }}</td>
+                <td align="left" valign="middle">{{ sales_item.sales_date }}</td>
+                <td align="left" valign="middle">{{ sales_item.sales_customer_code.customer_name }}</td>
+                <td align="left" valign="middle">{{ sales_item.sales_goods_code.goods_name }}</td>
+                <td align="left" valign="middle">{{ sales_item.sales_cloth_quantity }}</td>
+                <td align="left" valign="middle">{{ sales_item.discount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
